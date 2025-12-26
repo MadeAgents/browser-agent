@@ -1,0 +1,51 @@
+2025-12-19 20:48:57,152 - 3427854 - browsergym.experiments.loop - INFO - Running experiment BroswerAgentArgs_on_webarena.566_25 in:
+  results/webarena/cross/1219_gpt-5/webarena.566
+2025-12-19 20:54:58,422 - 3427854 - browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webarena.566.
+TimeoutError:
+BrowserType.launch: Timeout 180000ms exceeded.
+Call log:
+<launching> /home/code/zhoujm/.cache/ms-playwright/chromium-1117/chrome-linux/chrome --disable-field-trial-config --disable-background-networking --enable-features=NetworkService,NetworkServiceInProcess --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --headless --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disable-features=OverlayScrollbars,ExtendedOverlayScrollbars --user-data-dir=/tmp/playwright_chromiumdev_profile-XXXXXX6jyNL4 --remote-debugging-pipe --no-startup-window
+  - <launched> pid=439429
+
+Traceback (most recent call last):
+  File "/home/code/zhoujm/BrowserGym/browsergym/experiments/src/browsergym/experiments/loop.py", line 428, in run
+    step_info.from_reset(
+  File "/home/code/zhoujm/BrowserGym/browsergym/experiments/src/browsergym/experiments/loop.py", line 227, in from_reset
+    self.obs, env_info = env.reset(seed=seed)
+                         ^^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/gymnasium/wrappers/common.py", line 146, in reset
+    return super().reset(seed=seed, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/gymnasium/core.py", line 333, in reset
+    return self.env.reset(seed=seed, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/gymnasium/wrappers/common.py", line 400, in reset
+    return super().reset(seed=seed, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/gymnasium/core.py", line 333, in reset
+    return self.env.reset(seed=seed, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/browsergym/core/src/browsergym/core/env.py", line 275, in reset
+    self.browser = pw.chromium.launch(
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 13991, in launch
+    self._sync(
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/playwright/_impl/_browser_type.py", line 94, in launch
+    Browser, from_channel(await self._channel.send("launch", params))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 59, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/code/zhoujm/BrowserGym/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 514, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.launch: Timeout 180000ms exceeded.
+Call log:
+<launching> /home/code/zhoujm/.cache/ms-playwright/chromium-1117/chrome-linux/chrome --disable-field-trial-config --disable-background-networking --enable-features=NetworkService,NetworkServiceInProcess --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --headless --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disable-features=OverlayScrollbars,ExtendedOverlayScrollbars --user-data-dir=/tmp/playwright_chromiumdev_profile-XXXXXX6jyNL4 --remote-debugging-pipe --no-startup-window
+  - <launched> pid=439429
+
+
+2025-12-19 20:54:58,744 - 3427854 - browsergym.experiments.loop - ERROR - Error while saving step info in the finally block: 'NoneType' object has no attribute 'copy'
+2025-12-19 20:54:58,744 - 3427854 - browsergym.experiments.loop - INFO - Saving summary info.
