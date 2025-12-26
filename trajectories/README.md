@@ -86,12 +86,11 @@ Contains aggregated statistics and final status for the entire task execution:
   "err_msg": null,
   "terminated": true,
   "truncated": false,
-  "stats": {
-    "cum_steps": 14,
-    "cum_n_token_goal": 238,
-    "cum_step_elapsed": 177.71,
-    "cum_agent_elapsed": 1027.27
-  }
+  "stats.cum_steps": 14,
+  "stats.cum_n_token_goal": 238,
+  "stats.cum_step_elapsed": 177.71,
+  "stats.cum_agent_elapsed": 1027.27,
+  ...
 }
 ```
 
