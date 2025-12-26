@@ -76,8 +76,9 @@ For detailed trajectory data and analysis, see [Trajectory Results Documentation
 - **Dual-Module Collaboration**: Operator (execution) + Summarizer (progress tracking) form closed loop
 
 ---
-> **Note**: This agent system is developed as a prototype based on the [WebArena](https://arxiv.org/abs/2307.13854) environment, demonstrating production-viable engineering implementations that can be adapted for real-world deployment scenarios.
-
+> **Note**
+- This agent system is developed as a prototype based on the [WebArena](https://arxiv.org/abs/2307.13854) environment, demonstrating production-viable engineering implementations that can be adapted for real-world deployment scenarios.
+- The [BrowserGym](https://github.com/ServiceNow/BrowserGym) environment has been appropriately modified to support advanced web automation capabilities. For detailed information about the modifications, please refer to the [NOTICE](NOTICE) file.
 ---
 
 > ⚠️ **Source Code Status**: The implementation code in the `agent/` directory is currently being organized. The complete source code will be made available soon. Stay tuned for updates!

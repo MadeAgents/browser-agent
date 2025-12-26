@@ -120,6 +120,8 @@ Each log file includes:
 
 Contains visual snapshots of the browser state at each execution step.
 
+> ⚠️ **Note**: Screenshots are stored as a compressed archive due to their large size. After cloning the repository, you need to pull the archive using Git LFS(`git lfs pull`) and extract the archive(`7z x screenshots.7z.001`).
+
 **Structure:**
 ```
 screenshots/
