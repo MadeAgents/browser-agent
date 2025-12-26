@@ -1,0 +1,97 @@
+NOTICE
+
+This project incorporates code from the following open source project:
+
+================================================================================
+
+BrowserGym
+https://github.com/ServiceNow/BrowserGym
+
+Copyright 2024 ServiceNow
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Description:
+BrowserGym is a Gym environment for web task automation in the Chromium browser.
+This project uses BrowserGym's core functionalities, experiments utilities, and 
+WebArena benchmark components.
+
+
+Version: 0.14.1
+Commit ID: 79ac68e843fb173c26f7cc21900e4bcf7c77c16b
+
+
+================================================================================
+
+
+Additional modifications made by OPPO Research Institute - Topo Lab in 2025:
+
+Summary of Changes:
+- Extended core action space with new high-level functions for robust web interaction.
+- Enhanced environment and observation utilities to support structured HTML processing and accessibility tree enrichment.
+- Introduced a custom agent post-processor (AgentOCCAM) for action refinement and safety filtering.
+- Improved experiment loop to support advanced logging, checkpointing, and evaluation metrics.
+- Updated WebArena and VisualWebArena task implementations to enable flexible goal specification and multi-step reasoning.
+- Added new utility modules for HTML parsing, element selection, and DOM traversal.
+
+Modified Files:
+1. browsergym/core/src/browsergym/core/action/functions.py
+   - Added take_note() and calculate() functions to support multi-step reasoning
+   - Enhanced action primitives for agent capabilities
+
+2. browsergym/core/src/browsergym/core/action/highlevel.py
+   - Updated action imports to include new functions (take_note, calculate)
+   - Modified action set configurations
+
+3. browsergym/core/src/browsergym/core/env.py
+   - Integrated agentoccam_processor module for enhanced observation extraction
+   - Added extract_tree_from_page functionality
+   - Modified observation space and extraction logic
+
+4. browsergym/core/src/browsergym/utils/obs.py
+   - Added overlay_som() function for Set-of-Marks visualization
+   - Enhanced observation processing and rendering capabilities
+
+5. browsergym/experiments/src/browsergym/experiments/loop.py
+   - Added extract_action_content() function for action tag parsing
+   - Enhanced experiment loop logic and action processing
+
+6. browsergym/visualwebarena/src/browsergym/visualwebarena/task.py
+   - Modified task initialization and configuration logic
+   - Updated goal building and image processing functionality
+
+7. browsergym/webarena/src/browsergym/webarena/task.py
+   - Adjusted task setup and configuration loading
+   - Modified task prompt and evaluation logic
+
+New Files Added:
+1. browsergym/core/src/browsergym/core/agentoccam_processor.py
+   - Implements accessibility tree extraction and processing
+   - Provides TreeNode class and tree manipulation utilities
+   - Supports advanced observation extraction from browser pages
+
+2. browsergym/core/src/browsergym/core/utils.py
+   - Defines core data structures and type definitions
+   - Implements utility functions for data conversion (png_bytes_to_numpy)
+   - Provides TypedDict definitions for accessibility tree and DOM nodes
+
+3. browsergym/core/src/browsergym/core/html_tools/ (New Module)
+   - __init__.py: Module initialization and exports
+   - html_parser.py: HtmlParser class for DOM tree parsing and manipulation
+   - identifier.py: IdentifierTool class for generating unique element labels
+   - prompt.py: HtmlPrompt class for formatted HTML representation generation
+   - utils.py: Utility functions for XPath generation and element mapping
+   - configs/: Configuration files for HTML parsing strategies
+
+All modifications are clearly marked at the beginning of each file with modification
+notices including date and description of changes.
