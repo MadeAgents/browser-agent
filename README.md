@@ -1,91 +1,41 @@
 # 🤖 ColorBrowserAgent: An Intelligent GUI Agent for Complex Long-Horizon Web Automation
 
-**ColorBrowserAgent** is an intelligent web automation framework specifically engineered to tackle **Co**mplex **Lo**ng-ho**r**izon (**Color**) tasks in dynamic browser environments.
+![ColorBrowserAgent Framework](framework.png)
 
-By integrating declarative site-specific knowledge with a progressive memory compression mechanism, ColorBrowserAgent systematically addresses the stability and context challenges inherent in executing multi-step, long-duration browser interactions.
+**ColorBrowserAgent** is a framework designed for **Collaborative Autonomy** in complex web tasks. By integrating **Progressive Progress Summarization** with **Human-in-the-Loop Knowledge Adaptation**, ColorBrowserAgent addresses the critical challenges of long-horizon stability and site heterogeneity in web automation.
+
+📄 **Paper**: [arXiv:2601.07262](https://arxiv.org/abs/2601.07262) | **Code**: [GitHub](https://github.com/MadeAgents/browser-agent.git)
 
 ## 📋 Overview
 
-Developed for the [BrowserGym](https://github.com/ServiceNow/BrowserGym) environment, ColorBrowserAgent resolves three critical bottlenecks in real-world web GUI automation:
+ColorBrowserAgent tackles two fundamental challenges in web automation:
+- **Long-Horizon Stability**: Prevents "decision drift" in extended interaction sequences through progressive memory compression
+- **Site Heterogeneity**: Adapts to diverse web environments via Human-in-the-Loop Knowledge Adaptation
 
-- **Long-horizon Stability**: Prevents decision drift over long trajectories through progressive memory compression (**Color** focus).
-- **Site Heterogeneity**: Adapts to platform-specific quirks via externalized declarative knowledge bases.
-- **Observation Quality**: Enhances perception through multimodal fusion (AXTree, SoM, Screenshots).
+The framework adopts a **Human-Centred** approach that integrates human expertise into the agentic loop, creating a symbiotic collaboration between AI scalability and human adaptability.
 
-### 🏛️ Core Architecture
+### 🎯 Key Contributions
 
-The system implements a **Perception–Reasoning–Actuation** closed-loop with dual-agent collaboration:
+1. **Progressive Progress Summarization**: A Summarizer Agent that compresses trajectory history into fixed-length summaries with conditional corrective guidance, reducing context complexity from $O(T)$ to $O(1)$
+2. **Human-in-the-Loop Knowledge Adaptation (HITL-KA)**: An autonomous trigger mechanism that solicits expert intervention only when needed, learning site-specific priors without retraining
+3. **Dual-Agent Architecture**: Separates global planning (Summarizer) from execution (Operator) for robust long-horizon performance
 
-- **Operator Agent**: Executes precise web GUI actions based on site-specific knowledge and multimodal observations.
-- **Summarizer Agent**: Compresses trajectory history into fixed-length progress summaries with conditional corrective guidance.
+For detailed methodology and technical details, please refer to our [paper](https://arxiv.org/abs/2601.07262).
 
-This architecture enables **context-efficient decision making**: reducing prompt complexity from $O(T)$ to $O(1)$ while maintaining task coherence over 20+ interaction steps.
+## 📊 Performance
 
-### 🗂️ Site-Specific Knowledge Adaptation
+ColorBrowserAgent achieves **71.2% overall task success rate** on the [WebArena](https://arxiv.org/abs/2307.13854) benchmark using GPT-5, establishing a new state-of-the-art.
 
-Real-world web environments contain numerous site-specific quirks and platform defects. Our system addresses this through:
+| Domain | Success Rate |
+|--------|--------------|
+| Reddit | **87.4%** |
+| Shopping Admin | **76.4%** |
+| Shopping | **72.9%** |
+| GitLab | **65.7%** |
+| Map | **55.9%** |
+| **Overall** | **71.2%** |
 
-- **Tips Repository**: Maintains domain-specific navigation patterns, interaction guidelines, and common pitfalls for target sites (GitLab, Reddit, Shopping, Map, etc.).
-- **Action Mapping Layer**: Automatically detects site characteristics and transparently maps model-generated "standard actions" to site-executable equivalents.
-- **Declarative Adaptation Rules**: URL/title pattern matching + rule-based substitution for transparent handling of environment defects.
-
-**Example - GitLab Global Search Mapping**:
-- **Problem**: Global search submission fails in GitLab test environment.
-- **Solution**: Automatically maps `fill(search_box, keyword)` → `goto('/search?search=keyword&nav_source=navbar')`.
-- **Benefit**: The model operates "as if on a normal site" without needing awareness of the underlying adaptation.
-
-### 📝 Progressive Progress Summarization
-
-To solve **Complex Long-horizon** tasks within context window limitations:
-
-- **Updateable Compressed Memory**: Converts linearly growing full trajectories into fixed-length progress summaries.
-- **Conditional Correction Mechanism**: Detects deviation/errors and provides actionable suggestions only when necessary.
-- **Structured Summary Template**:
-  - ✅ **Current Progress**: Completed sub-goals and extracted key facts.
-  - 🔍 **Current State Analysis**: Page status and interactable elements.
-  - ➡️ **Next-step Guidance** (conditional): Corrective suggestions triggered by deviation detection.
-
-### 👁️ Multimodal Observation
-
-Hybrid perception strategy combining:
-
-- **Accessibility Tree (AXTree)**: Structured semantic representation of interactable elements.
-- **Set-of-Mark (SoM)**: Bounding box annotations overlaid on screenshots for vision-structure alignment.
-- **Flexible Configuration**: Supports combinations of AXTree/DOM/Screenshot/SoM for different scenarios.
-
-### 📊 Performance
-
-Our approach achieves **71.18% task success rate** on the [WebArena](https://arxiv.org/abs/2307.13854) benchmark with the **GPT-5 model**, demonstrating superior capabilities in handling complex, long-horizon web tasks.
-
-For detailed trajectory data and analysis, see [Trajectory Results Documentation](trajectories/README.md).
-
-## ✨ Key Features
-
-### 🏗️ Systematic Engineering
-- **Site Knowledge Decoupling**: Externalizes site-specific logic to avoid polluting general prompts.
-- **Extensibility**: New sites require only adding tips files and adaptation rules.
-- **Maintainability**: Centralized site-specific knowledge management with version control.
-- **Observability**: Records adaptation rule hits to quantify knowledge base effectiveness.
-
-### 🧠 Long-Horizon Stability
-- **Memory Compression**: Breakthrough context window limitations for extended complex tasks.
-- **Decision Coherence**: Prevents decision drift through progressive summarization.
-- **Self-Correction**: Conditional mechanism detects and fixes goal-deviating behaviors.
-
-### 🔄 Intelligent Adaptation
-- **Transparent Mapping**: Models operate on "standardized" actions while the system handles site quirks.
-- **Evidence-Based Summarization**: Summaries must be grounded in actual observations (screenshots/AXTree).
-- **Dual-Module Collaboration**: Operator (execution) + Summarizer (progress tracking) form a robust closed loop.
-
----
-
-> **Note**
-> - This agent system is developed as a prototype based on the [WebArena](https://arxiv.org/abs/2307.13854) environment, demonstrating production-viable engineering implementations that can be adapted for real-world deployment scenarios.
-> - The [BrowserGym](https://github.com/ServiceNow/BrowserGym) environment has been appropriately modified to support advanced web automation capabilities. For detailed information about the modifications, please refer to the [NOTICE](NOTICE) file.
-
----
-
-> ⚠️ **Source Code Status**: The implementation code in the `agent/` directory is currently being organized. The complete source code will be made available soon. Stay tuned for updates!
+See the [paper](https://arxiv.org/abs/2601.07262) for detailed ablation studies and domain-specific analysis.
 
 ## 🚀 Quick Start
 
@@ -106,21 +56,10 @@ source .venv/bin/activate  # Linux/Mac
 
 ```bash
 uv pip install -r requirements.txt
-```
-
-This will automatically install:
-- Python third-party libraries (numpy, Pillow, scikit-image, etc.)
-- BrowserGym local packages (core, experiments, webarena)
-
-After installing dependencies, install Playwright's Chromium browser:
-
-```bash
 playwright install chromium
 ```
 
 ### 3️⃣ Configure Environment Variables
-
-Copy the example configuration file and modify it with your settings:
 
 ```bash
 cp .env.example .env
@@ -130,17 +69,13 @@ cp .env.example .env
 Example `.env` configuration:
 
 ```bash
-# API Configuration
 OPENAI_API_KEY=your_api_key_here
 OPENAI_API_BASE=your_api_base_url
-
-# WebArena Configuration
 WEBARENA_SHOPPING_URL=http://localhost:7770
 WEBARENA_REDDIT_URL=http://localhost:9999
-# ... other configurations
 ```
 
-For WebArena Docker environment setup, please refer to the [official WebArena documentation](https://github.com/web-arena-x/webarena/blob/main/environment_docker/README.md).
+For WebArena Docker environment setup, refer to the [official documentation](https://github.com/web-arena-x/webarena/blob/main/environment_docker/README.md).
 
 ### 4️⃣ Usage
 
@@ -153,26 +88,25 @@ python agent/run_webarena.py \
     --model_name gpt-5
 ```
 
-**Adding Experiential Knowledge**
+**Enabling Human-in-the-Loop Knowledge Adaptation**
 
 1. Create site-specific knowledge files in `agent/tips/`
-2. Format: Plain text with navigation patterns, interaction guidelines, and common pitfalls
-3. Enable with `--tips true` flag
+2. Enable with `--tips true` flag
 
 Example tips structure:
 
 ```text
-# GitLab Tips
-- Use direct URL navigation for global search: /search?search=keyword
-- Issue creation requires explicit confirmation button click
-- Project permissions are hierarchical: Owner > Maintainer > Developer
+# Shopping Website Tips
+- Navigate using dropdown menus when possible
+- Select shipping method before 'Place Order' button becomes interactive
+- Return product category (e.g., "books") rather than specific names
 ```
 
-**Custom Observation Strategies**
-Combine different observation modalities by adjusting flags:
-- Pure visual: `--use_screenshot True --use_axtree False`
-- Hybrid: `--use_screenshot True --use_axtree True --use_som True`
-- Structure-only: `--use_html True --use_screenshot False`
+## 📚 Documentation
+
+- **Paper**: [arXiv:2601.07262](https://arxiv.org/abs/2601.07262) - Full technical details and experimental results
+- **Trajectory Results**: [Trajectory Documentation](trajectories/README.md)
+- **BrowserGym Modifications**: [NOTICE](NOTICE) file
 
 ## 📄 License
 
@@ -184,15 +118,11 @@ This project builds upon:
 - [BrowserGym](https://github.com/ServiceNow/BrowserGym) - Web automation framework
 - [WebArena](https://github.com/web-arena-x/webarena.git) - Benchmark for web agents
 
-Special thanks to the open-source community for their foundational work in web automation and reinforcement learning.
-
 ## 📧 Contact
 
-For questions, collaboration, or research inquiries, please:
+For questions, collaboration, or research inquiries:
 - Open an issue on GitHub
 - Submit a pull request
 - Contact the authors
 
 ---
-
-**Note**: This is a research prototype demonstrating production-ready engineering practices. Contributions and feedback are welcome!
