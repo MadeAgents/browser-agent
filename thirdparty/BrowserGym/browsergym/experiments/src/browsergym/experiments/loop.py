@@ -963,6 +963,8 @@ def _get_env_name(task_name: str):
         import browsergym.workarena
     elif task_name.startswith("webarena"):
         import browsergym.webarena
+    elif task_name.startswith("webchorearena"):
+        import browsergym.webchorearena
     elif task_name.startswith("visualwebarena"):
         import browsergym.visualwebarena
     elif task_name.startswith("assistantbench"):

@@ -24,16 +24,16 @@ For detailed methodology and technical details, please refer to our [paper](http
 
 ## 📊 Performance
 
-ColorBrowserAgent achieves **71.2% overall task success rate** on the [WebArena](https://arxiv.org/abs/2307.13854) benchmark using GPT-5, establishing a new state-of-the-art.
+ColorBrowserAgent achieves **71.2% overall task success rate** on the [WebArena](https://arxiv.org/abs/2307.13854) benchmark and **47.40%** on [WebChoreArena](https://arxiv.org/abs/2506.01952) benchmark using GPT-5, establishing a new state-of-the-art(12/2025).
 
-| Domain | Success Rate |
-|--------|--------------|
-| Reddit | **87.4%** |
-| Shopping Admin | **76.4%** |
-| Shopping | **72.9%** |
-| GitLab | **65.7%** |
-| Map | **55.9%** |
-| **Overall** | **71.2%** |
+| Domain | WebArena(Success Rate) | WebChoreArena(Success Rate) |
+|--------|--------------|--------------|
+| Reddit | **87.4%** | **43.96%**
+| Shopping Admin | **76.4%** | **58.70%**
+| Shopping | **72.9%** | **43.58%**
+| GitLab | **65.7%** | **53.54%**
+| Map | **55.9%** | -
+| **Overall** | **71.2%** | **47.40%**
 
 See the [paper](https://arxiv.org/abs/2601.07262) for detailed ablation studies and domain-specific analysis.
 
