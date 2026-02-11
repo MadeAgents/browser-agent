@@ -1,15 +1,20 @@
 # Trajectories Directory
 
-This directory contains the execution trajectories and outputs from the browser agent running on WebArena benchmark tasks. Each task's trajectory includes step-by-step information, logs, and screenshots captured during the agent's execution.
+This directory contains the execution trajectories and outputs from the browser agent running on WebArena/WebChoreArena benchmark tasks. Each task's trajectory includes step-by-step information, logs, and screenshots captured during the agent's execution.
 
 ## Directory Structure
 
 ```
-trajectories/
-├── results/          # JSON files containing detailed step and summary information
-├── logs/             # Text logs of task execution
-├── screenshots/      # Screenshots captured at each step
-└── README.md         # This file
+trajectories
+├── README.md            # This file
+├── webarena
+│   ├── logs             # Text logs of task execution
+│   ├── results          # JSON files containing detailed step and summary information
+│   └── screenshots      # Screenshots captured at each step
+└── webchorearena
+    ├── logs
+    ├── results
+    └── screenshots
 ```
 
 ## Contents
