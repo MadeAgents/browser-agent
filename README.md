@@ -6,6 +6,13 @@
 
 📄 **Paper**: [arXiv:2601.07262](https://arxiv.org/abs/2601.07262) | **Code**: [GitHub](https://github.com/MadeAgents/browser-agent.git)
 
+## 📰 News
+
+- **02/2026**: Achieved **Top 1** on the WebChoreArena benchmark with 47.40% success rate.
+- **01/2026**: Paper released.
+- **12/2025**: Open-sourced ColorBrowserAgent and released WebArena results with 71.2% success rate(Top 1).
+
+
 ## 📋 Overview
 
 ColorBrowserAgent tackles two fundamental challenges in web automation:
